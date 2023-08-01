@@ -43,9 +43,6 @@ export default function DashboardPage() {
                 )}
               </h1>
             </div>
-            <Link href="/posts" className="btn btn-primary mx-1">
-              Add Posts
-            </Link>
             {user.isAdmin ? (
               <Link href="/add-categories" className="btn mx-1 btn-success">
                 Add Categories
