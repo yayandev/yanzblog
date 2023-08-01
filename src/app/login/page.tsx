@@ -19,7 +19,7 @@ export default function LoginPage() {
     setIsProsses(true);
     const response: any = await axios.post("/api/users/login", user);
     if (response.data.success) {
-      router.push("/dashboard");
+      router.push("/");
     } else {
       setNotif(response.data.message);
       setIsProsses(false);
