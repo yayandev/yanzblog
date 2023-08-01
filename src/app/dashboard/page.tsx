@@ -2,9 +2,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 export default function DashboardPage() {
-  const router = useRouter();
   const [user, setUser] = useState({
     _id: "",
     name: "",
@@ -28,14 +26,6 @@ export default function DashboardPage() {
     getJumlahPost();
   }, []);
 
-  const handleLogout = async () => {
-    const response = await axios.get("/api/users/logout");
-    if (response.data.success) {
-      router.push("/login");
-    } else {
-      console.log(response.data.message);
-    }
-  };
   return (
     <div className="hero min-h-screen bg-base-200">
       {user._id !== "" ? (
@@ -45,7 +35,7 @@ export default function DashboardPage() {
             <h1 className="text-5xl font-bold my-3">{user.name}</h1>
             <div className="w-full p-3 my-3 rounded shadow">
               <h1 className="font-bold">
-                Posts :{" "}
+                Posts :
                 {jumlahPost === null ? (
                   <span className="loading loading-dots loading-xs"></span>
                 ) : (
@@ -53,12 +43,9 @@ export default function DashboardPage() {
                 )}
               </h1>
             </div>
-            <button
-              className="btn mx-1 btn-error"
-              onClick={(e) => handleLogout()}
-            >
-              Logout
-            </button>
+            <Link href="/posts" className="btn btn-primary mx-1">
+              Add Posts
+            </Link>
             {user.isAdmin ? (
               <Link href="/add-categories" className="btn mx-1 btn-success">
                 Add Categories
