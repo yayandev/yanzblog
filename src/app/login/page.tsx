@@ -17,7 +17,7 @@ export default function LoginPage() {
   const onLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsProsses(true);
-    const response = await axios.post("/api/users/login", user);
+    const response: any = await axios.post("/api/users/login", user);
     if (response.data.success) {
       router.push("/dashboard");
     } else {
