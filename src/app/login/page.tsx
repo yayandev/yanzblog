@@ -73,7 +73,7 @@ export default function LoginPage() {
               )}
             </button>
             <div className="w-full text-center">
-              <Link href="/register">You don't have an account?</Link>
+              <Link href="/register">You dont have an account?</Link>
             </div>
           </form>
         </div>
