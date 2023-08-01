@@ -53,7 +53,10 @@ export default function DashboardPage() {
                 )}
               </h1>
             </div>
-            <button className="btn mx-1 btn-error" onClick={handleLogout}>
+            <button
+              className="btn mx-1 btn-error"
+              onClick={(e) => handleLogout()}
+            >
               Logout
             </button>
             {user.isAdmin ? (
