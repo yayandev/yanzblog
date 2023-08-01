@@ -23,7 +23,6 @@ export default function PostsPage() {
   const onPosts = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsProsses(true);
-    window.my_modal_1.showModal();
     const response = await axios.post("/api/posts", posts);
     if (response.data.success) {
       setPosts({
@@ -34,12 +33,10 @@ export default function PostsPage() {
       setNotif("success");
       setMsg(response.data.message);
       setIsProsses(false);
-      window.my_modal_1.close();
     } else {
       setNotif("error");
       setMsg(response.data.message);
       setIsProsses(false);
-      window.my_modal_1.close();
     }
   };
   return (
@@ -95,17 +92,15 @@ export default function PostsPage() {
             className="textarea my-3 w-full"
             placeholder="Enter Your Body posts"
           ></textarea>
-          <button type="submit" className="btn btn-primary my-3">
+          <button
+            type="submit"
+            className="btn btn-primary my-3"
+            disabled={isProsses}
+          >
             Submit
           </button>
         </form>
       </div>
-      <dialog id="my_modal_1" className="modal">
-        <div method="dialog" className="modal-box">
-          <h3 className="font-bold text-lg">Prosses Uploaded wait!</h3>
-          <span className="loading loading-spinner loading-lg"></span>
-        </div>
-      </dialog>
     </>
   );
 }
